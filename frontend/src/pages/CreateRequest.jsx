@@ -22,9 +22,9 @@ const CreateRequest = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/requests/create', formData, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      await axios.post('https://partner-finder-kqn5.onrender.com/api/requests/create', formData, {
+  headers: { Authorization: `Bearer ${token}` }
+});
       navigate('/dashboard');
     } catch (err) {
       alert(err.response?.data?.message || 'Failed to create invite');

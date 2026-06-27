@@ -15,10 +15,10 @@ const Dashboard = () => {
       const token = localStorage.getItem('token');
       const headers = { headers: { Authorization: `Bearer ${token}` } };
       
-      const resOpen = await axios.get('http://localhost:5000/api/requests/open', headers);
+      const resOpen = await axios.get('https://partner-finder-kqn5.onrender.com/api/requests/open', headers);
       setMatches(resOpen.data);
 
-      const resUserMatches = await axios.get('http://localhost:5000/api/requests/my-matches', headers);
+      const resUserMatches = await axios.get('https://partner-finder-kqn5.onrender.com/api/requests/my-matches', headers);
       setMyHosted(resUserMatches.data.hosted);
       setMyJoined(resUserMatches.data.joined);
 
@@ -36,7 +36,7 @@ const Dashboard = () => {
   const handleAcceptMatch = async (requestId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/requests/${requestId}/accept`, {}, {
+      await axios.put(`https://partner-finder-kqn5.onrender.com/api/requests/${requestId}/accept`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Match accepted successfully!');
@@ -50,7 +50,7 @@ const Dashboard = () => {
     if (!window.confirm('Are you sure you want to cancel this match invite?')) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/requests/${requestId}`, {
+      await axios.delete(`https://partner-finder-kqn5.onrender.com/api/requests/${requestId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchDashboardData();

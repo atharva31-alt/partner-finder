@@ -16,7 +16,7 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const res = await axios.post('https://partner-finder-kqn5.onrender.com/api/auth/register', formData);
       
       // Save the token to local storage so the application keeps us logged in
       localStorage.setItem('token', res.data.token);

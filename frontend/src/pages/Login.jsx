@@ -10,7 +10,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const res = await axios.post('https://partner-finder-kqn5.onrender.com/api/auth/login', { email, password });
       
       // Save the token to local storage so the application knows we are logged in
       localStorage.setItem('token', res.data.token);
