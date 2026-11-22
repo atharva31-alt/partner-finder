@@ -31,7 +31,7 @@ export default function Bot({ open, setOpen, user }) {
 
   return (
     <>
-      <button className="btn ib" id="fab" aria-label="AI assistant" onClick={() => setOpen(!open)}><Ic n="bot" s={30} /></button>
+      <button className={'btn ib' + (open ? ' hide' : '')} id="fab" aria-label="AI assistant" onClick={() => setOpen(!open)}><Ic n="bot" s={30} /></button>
       <div id="bot" className={'glass' + (open ? ' open' : '')}>
         <div className="bh">
           <span className="bav"><Ic n="bot" s={22} /></span>

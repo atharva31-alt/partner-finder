@@ -284,3 +284,108 @@ h1{font-size:clamp(36px,6vw,54px);line-height:1}h2{font-size:28px}h3{font-size:2
 /* headline: three tidy lines, no stray gaps */
 .lp-h1 .ln{display:block}
 .lp-h1 .rot{gap:.1em;margin:.02em 0}
+
+/* ===================================================================
+   v4.4  PHONE OPTIMISATION  (touch behaviour, spacing, smooth scroll)
+   =================================================================== */
+*{-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button,a,.chip,.card,.rb,.ib,.sl,.tabs button,.bnav a{touch-action:manipulation}
+button,.chip,.sl,.bnav a,.tabs button,.brand{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.md,.pbody,.msgs,.rooms,#np,.main>.chips{-webkit-overflow-scrolling:touch}
+.md{overscroll-behavior:contain}
+.app{min-height:100vh;min-height:100dvh}
+.lp,.app{overflow-x:clip}
+input,select,textarea{-webkit-appearance:none;appearance:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239AA3AB' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:42px}
+input[type=datetime-local]{min-height:52px;display:block}
+input[type=datetime-local]::-webkit-date-and-time-value{text-align:left}
+.grid{grid-template-columns:repeat(auto-fill,minmax(min(290px,100%),1fr))}
+.steps{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
+
+/* touch screens: no sticky hover states, clear press feedback instead */
+@media(hover:none){
+  .btn:hover,.card:hover,.chip:hover,.tabs button:hover:not(.on),.lf:hover,.pick:hover,.stp:hover,.nudge:hover,.rb:hover,.ib:hover,.uchip:hover,.brand:hover,.gb:hover,.sl:hover{transform:none}
+  .btn:hover{box-shadow:0 8px 22px rgba(255,139,50,.32)}.btn.g:hover{box-shadow:none}
+  .card:hover,.pick:hover{box-shadow:0 8px 28px rgba(0,0,0,.28)}
+  .lf:hover{border-color:var(--bd);background:rgba(255,255,255,.04)}
+  .lf:hover .lfi{background:rgba(255,139,50,.15);color:var(--ac);transform:none}
+  .chip:hover{border-color:var(--bd)}.chip.on:hover{border-color:var(--ac)}
+  .chip:hover svg,.sl:hover svg,.ib:hover svg,.rb.lk:hover svg,.rb.sk:hover svg,.btn:hover .ic{transform:none;animation:none}
+  .btn:active{transform:scale(.96)}.chip:active{transform:scale(.94)}.rb:active{transform:scale(.9)}
+  .card:active,.pick:active,.lf:active,.stp:active,.nudge:active{transform:scale(.985)}
+}
+
+@media(max-width:899px){
+  /* lighter effects = smoother scrolling */
+  .blob{filter:blur(50px);animation:none;opacity:.14}
+  .acard{animation:up .8s .1s both}
+  .mo{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(5,6,8,.74)}
+  .t{-webkit-backdrop-filter:none;backdrop-filter:none}
+
+  /* spacing: tight and even, no dead space */
+  .main{padding:10px 16px calc(92px + env(safe-area-inset-bottom,0px))}
+  .mtop{margin-bottom:2px}
+  .hero{padding:2px 0 0}.hero h1{font-size:clamp(32px,9.5vw,46px)}.hero p{margin:4px 0 0}
+  .banner{padding:18px;margin:10px 0}.banner .btn{width:100%}
+  .stats{gap:10px;margin:10px 0}.stat{padding:16px}.stat b{font-size:28px}
+  h2{font-size:26px;margin:4px 0 10px}
+  .empty-card{padding:32px 16px}
+  .glass.stp{padding:18px}
+
+  /* filter chips: one swipeable row instead of many wrapped rows */
+  .main>.chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:10px -16px;padding:2px 16px 6px}
+  .main>.chips::-webkit-scrollbar{display:none}
+  .main>.chips .chip{flex:none}
+  .chip{min-height:44px;display:inline-flex;align-items:center;gap:6px}
+
+  /* login page */
+  .lp{padding:0 16px 24px}
+  .lp::before{width:360px;height:360px;right:-90px;top:-80px}
+  .topbar{padding-top:10px}
+  .lp-grid{gap:24px;padding:6px 0 10px}
+  .lp-h1{font-size:clamp(46px,13.5vw,70px);margin:14px 0 10px}
+  .lp-p{margin-bottom:18px}
+  .lp-cta .btn{flex:1 1 100%}
+  .lp-feats{gap:10px;margin-top:0}.lf{padding:14px}
+  .marq{margin-top:20px;padding:12px 0}
+  .acard .af{padding:24px 20px}
+
+  /* bottom sheet modals */
+  .mo{align-items:flex-end;padding:0}
+  .md{width:100%;max-height:88vh;max-height:88dvh;border-radius:26px 26px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px));animation:sheet .35s cubic-bezier(.2,.8,.2,1) both}
+  .mcard{padding-top:30px}
+
+  /* panels and toasts sized for phones */
+  #np{left:10px;right:10px;width:auto;top:calc(64px + env(safe-area-inset-top,0px));max-height:70vh;max-height:70dvh}
+  #toasts{top:calc(10px + env(safe-area-inset-top,0px));left:10px;right:10px;max-width:none}
+  #bot{left:10px;right:10px;width:auto;bottom:calc(84px + env(safe-area-inset-bottom,0px));height:min(72vh,560px);height:min(72dvh,560px)}
+  body.in #fab.hide{display:none}
+
+  /* discover + chat use the real visible height */
+  .stack{height:520px;height:clamp(500px,calc(100dvh - 300px),640px);min-height:0}
+  .chat{height:auto}.pane{height:calc(100vh - 330px);height:calc(100dvh - 330px);min-height:360px}
+  .rooms{padding:6px}.room{flex:none;min-width:170px}
+}
+@keyframes sheet{from{transform:translateY(100%)}to{transform:none}}
+@media(max-width:380px){.lp-h1{font-size:44px}.stats{grid-template-columns:1fr 1fr}.stat b{font-size:24px}.btn{padding:12px 18px}}
+
+/* v4.4 fix: let the hero column shrink to the screen width (long words like "Basketball") */
+@media(max-width:899px){
+  .lp-grid{grid-template-columns:minmax(0,1fr)}
+  .lp-hero,.acard{min-width:0}
+  .lp-h1{font-size:clamp(42px,12.5vw,70px)}
+  .rot{gap:.08em}.rot svg{width:.62em;height:.62em}
+}
+
+/* v4.4: compact phone details */
+@media(max-width:899px){
+  .mtop .brand{font-size:clamp(22px,6.8vw,28px);white-space:nowrap;gap:9px}
+  .mtop .brand .bi{width:38px;height:38px}
+  .mtop .ib{flex:none}
+}
+@media(max-width:480px){
+  .lp-feats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lf{flex-direction:column;gap:10px;padding:14px}
+}
+@media(max-width:360px){.mtop .brand{font-size:20px;gap:7px}.mtop .brand .bi{width:34px;height:34px;border-radius:10px}.mtop{gap:8px}}

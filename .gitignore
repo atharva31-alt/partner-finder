@@ -1,21 +1,25 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
 
 # Dependencies
 node_modules/
 **/node_modules/
 
-# Environment secrets
-.env
-.env.*
-!.env.example
-
 # Build output
 dist/
 **/dist/
+build/
+coverage/
+
+# Vercel
+.vercel/
 
 # Logs
 *.log
 npm-debug.log*
 
-# Operating system files
+# System files
 .DS_Store
 Thumbs.db
